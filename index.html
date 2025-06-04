@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freedom Cabins NZ - Test</title>
     <style>
         body {
@@ -16,213 +18,139 @@
             border-radius: 10px;
             text-align: center;
             margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .header h1 {
             color: #da8a67;
-            margin: 0;
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
         }
-        .config-box {
+        .test-box {
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        select, input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 2px solid #ddd;
+        .status {
+            padding: 15px;
             border-radius: 5px;
-            font-size: 16px;
+            margin: 10px 0;
+            font-weight: bold;
         }
+        .success { background: #d4edda; color: #155724; }
+        .info { background: #e3f2fd; color: #1565c0; }
         .btn {
             background: #da8a67;
             color: white;
-            padding: 15px 30px;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
             cursor: pointer;
-            width: 100%;
+            font-size: 16px;
+            margin: 5px;
         }
         .btn:hover {
             background: #c77755;
-        }
-        .price-display {
-            background: #da8a67;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Freedom Cabins NZ</h1>
-        <p>Cabin Configurator - Test Version</p>
+        <h1>🏠 Freedom Cabins NZ</h1>
+        <p>GitHub Pages Test - Configurator Setup</p>
     </div>
 
-    <div class="config-box">
-        <h2>Select Your Cabin</h2>
-        
-        <label>Cabin Model:</label>
-        <select id="cabinModel">
-            <option value="">Choose a cabin...</option>
-            <option value="small">8.4x3 - 1 Bedroom - $67,900</option>
-            <option value="medium">10x3 - 1 Bedroom - $81,900</option>
-            <option value="large">12x4 - 2 Bedroom - $125,900</option>
-        </select>
-
-        <label>Build Category:</label>
-        <select id="buildCategory">
-            <option value="basic">Basic Build (+$0)</option>
-            <option value="standard">Standard Build (+$15,000)</option>
-            <option value="superior">Superior Build (+$25,000)</option>
-        </select>
-
-        <label>Bathroom Package:</label>
-        <select id="bathroom">
-            <option value="standard">Standard Bathroom</option>
-            <option value="deluxe">Deluxe Bathroom (+$3,500)</option>
-        </select>
-
-        <div class="price-display" id="totalPrice">
-            Total: $0
+    <div class="test-box">
+        <h2>✅ Step 1: GitHub Pages Test</h2>
+        <div class="status success">
+            SUCCESS: If you can see this page, GitHub Pages is working correctly!
         </div>
-
-        <button class="btn" onclick="showQuoteForm()">Get Your Quote</button>
     </div>
 
-    <div class="config-box" id="quoteForm" style="display: none;">
-        <h2>Request Your Quote</h2>
-        
-        <label>Your Name:</label>
-        <input type="text" id="customerName" required>
-        
-        <label>Email:</label>
-        <input type="email" id="customerEmail" required>
-        
-        <label>Phone:</label>
-        <input type="tel" id="customerPhone" required>
-        
-        <label>Notes:</label>
-        <textarea id="notes" rows="3"></textarea>
-        
-        <button class="btn" onclick="submitQuote()">Submit Quote</button>
-        <div id="status" style="margin-top: 10px; padding: 10px; display: none;"></div>
+    <div class="test-box">
+        <h2>🧪 Step 2: JavaScript Test</h2>
+        <button class="btn" onclick="testJavaScript()">Test JavaScript</button>
+        <div id="jsResult" class="status info" style="display: none;">
+            JavaScript is working correctly!
+        </div>
+    </div>
+
+    <div class="test-box">
+        <h2>📡 Step 3: API Connection Test</h2>
+        <button class="btn" onclick="testWixBackend()">Test Wix Backend</button>
+        <div id="apiResult" style="margin-top: 10px;"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>📱 Step 4: Responsive Test</h2>
+        <div class="status info">
+            Try resizing your browser window or viewing on mobile. 
+            This page should adapt to different screen sizes.
+        </div>
+    </div>
+
+    <div class="test-box">
+        <h2>🎯 Next Steps</h2>
+        <p><strong>If all tests above pass:</strong></p>
+        <ul>
+            <li>✅ GitHub Pages hosting works</li>
+            <li>✅ JavaScript functions work</li>
+            <li>✅ Wix backend connection works</li>
+            <li>✅ Mobile responsive design works</li>
+        </ul>
+        <p><strong>Ready for full configurator deployment!</strong></p>
     </div>
 
     <script>
-        const prices = {
-            small: 67900,
-            medium: 81900,
-            large: 125900
-        };
-
-        const buildUpgrades = {
-            basic: 0,
-            standard: 15000,
-            superior: 25000
-        };
-
-        function updatePrice() {
-            const cabin = document.getElementById('cabinModel').value;
-            const build = document.getElementById('buildCategory').value;
-            const bathroom = document.getElementById('bathroom').value;
-            
-            let total = 0;
-            
-            if (cabin && prices[cabin]) {
-                total += prices[cabin];
-                total += buildUpgrades[build];
-                
-                if (bathroom === 'deluxe') {
-                    total += 3500;
-                }
-            }
-            
-            document.getElementById('totalPrice').textContent = 'Total: $' + total.toLocaleString();
+        function testJavaScript() {
+            document.getElementById('jsResult').style.display = 'block';
+            console.log('✅ JavaScript test successful');
         }
 
-        function showQuoteForm() {
-            const cabin = document.getElementById('cabinModel').value;
-            if (!cabin) {
-                alert('Please select a cabin model first');
-                return;
-            }
-            document.getElementById('quoteForm').style.display = 'block';
-            document.getElementById('quoteForm').scrollIntoView();
-        }
-
-        function submitQuote() {
-            const name = document.getElementById('customerName').value;
-            const email = document.getElementById('customerEmail').value;
-            const phone = document.getElementById('customerPhone').value;
+        function testWixBackend() {
+            const resultDiv = document.getElementById('apiResult');
+            resultDiv.innerHTML = '<div class="status info">Testing connection to Wix backend...</div>';
             
-            if (!name || !email || !phone) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            const quoteData = {
-                customerName: name,
-                customerEmail: email,
-                customerPhone: phone,
-                additionalNotes: document.getElementById('notes').value,
-                cabinModel: document.getElementById('cabinModel').options[document.getElementById('cabinModel').selectedIndex].text,
-                buildCategory: document.getElementById('buildCategory').value,
-                bathroomPackage: document.getElementById('bathroom').value,
-                quoteTotal: document.getElementById('totalPrice').textContent,
-                timestamp: new Date().toISOString()
-            };
-
-            // Show loading
-            document.getElementById('status').style.display = 'block';
-            document.getElementById('status').style.background = '#e3f2fd';
-            document.getElementById('status').style.color = '#1565c0';
-            document.getElementById('status').textContent = 'Sending quote...';
-
-            // Send to Wix backend
-            fetch('https://freedomcabinsnz.wixsite.com/my-site-2/_functions/submitCabinQuote', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(quoteData)
+            // Test the health check endpoint
+            fetch('https://freedomcabinsnz.wixsite.com/my-site-2/_functions/health', {
+                method: 'GET'
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('status').style.background = '#d4edda';
-                    document.getElementById('status').style.color = '#155724';
-                    document.getElementById('status').textContent = '✅ Quote sent successfully! We will contact you within 1 hour.';
-                    
-                    // Clear form
-                    document.getElementById('customerName').value = '';
-                    document.getElementById('customerEmail').value = '';
-                    document.getElementById('customerPhone').value = '';
-                    document.getElementById('notes').value = '';
-                } else {
-                    throw new Error(data.error || 'Unknown error');
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
+                return response.json();
+            })
+            .then(data => {
+                console.log('✅ Wix backend test successful:', data);
+                resultDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ Wix Backend Connection Successful!<br>
+                        Status: ${data.status}<br>
+                        Message: ${data.message}<br>
+                        Timestamp: ${data.timestamp}
+                    </div>
+                `;
             })
             .catch(error => {
-                document.getElementById('status').style.background = '#f8d7da';
-                document.getElementById('status').style.color = '#721c24';
-                document.getElementById('status').textContent = '❌ Failed to send quote: ' + error.message;
+                console.error('❌ Wix backend test failed:', error);
+                resultDiv.innerHTML = `
+                    <div class="status" style="background: #f8d7da; color: #721c24;">
+                        ❌ Backend Connection Failed<br>
+                        Error: ${error.message}<br>
+                        <small>This needs to be fixed before deploying the full configurator.</small>
+                    </div>
+                `;
             });
         }
 
-        // Add event listeners
-        document.getElementById('cabinModel').addEventListener('change', updatePrice);
-        document.getElementById('buildCategory').addEventListener('change', updatePrice);
-        document.getElementById('bathroom').addEventListener('change', updatePrice);
-        
-        // Initial price update
-        updatePrice();
+        // Auto-run some tests when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Freedom Cabins Test Page Loaded');
+            console.log('📍 Current URL:', window.location.href);
+            console.log('📱 Screen size:', window.innerWidth + 'x' + window.innerHeight);
+        });
     </script>
 </body>
 </html>
