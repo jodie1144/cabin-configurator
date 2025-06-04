@@ -243,7 +243,7 @@
             transform: none;
         }
 
-        /* Modal Styles */
+        /* Modal Styles - FIXED STYLING */
         .modal {
             display: none;
             position: fixed;
@@ -251,53 +251,62 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 10000;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            backdrop-filter: blur(2px);
         }
 
         .modal-content {
             background: white;
             border-radius: 15px;
             padding: 40px;
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
             position: relative;
+            border: 1px solid #e0e0e0;
         }
 
         .modal-header {
             text-align: center;
             margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
         }
 
         .modal-header h2 {
             color: #474d60;
             font-size: 2rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .modal-header p {
             color: #666;
+            font-size: 1.1rem;
         }
 
         .close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #f0f0f0;
+            top: 15px;
+            right: 15px;
+            background: #f5f5f5;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
             color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-btn:hover {
@@ -306,25 +315,28 @@
         }
 
         .form-row {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-row label {
             display: block;
             color: #474d60;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 8px;
+            font-size: 0.95rem;
         }
 
         .form-row input,
         .form-row textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 15px 18px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1rem;
             color: #474d60;
             transition: all 0.3s ease;
+            background: white;
+            font-family: inherit;
         }
 
         .form-row input:focus,
@@ -337,62 +349,82 @@
         .form-row textarea {
             resize: vertical;
             min-height: 100px;
+            font-family: inherit;
         }
 
         .email-backup-text {
-            margin-top: 15px;
+            margin-top: 20px;
             text-align: center;
             font-size: 0.9rem;
             color: #666;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
 
         .email-backup-text a {
             color: #da8a67;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .email-backup-text a:hover {
             text-decoration: underline;
         }
 
-        /* Success/Error Messages */
+        /* Success/Error Messages - IMPROVED */
         .success-message {
             background: #d4edda;
             color: #155724;
-            padding: 15px;
+            padding: 18px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-left: 4px solid #28a745;
+            font-weight: 500;
         }
 
         .error-message {
             background: #f8d7da;
             color: #721c24;
-            padding: 15px;
+            padding: 18px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-left: 4px solid #dc3545;
+            font-weight: 500;
         }
 
-        /* GitHub Integration Status */
-        .github-status {
-            background: #e8f5e8;
-            border: 2px solid #4caf50;
-            border-radius: 10px;
+        .info-message {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2196f3;
+            font-weight: 500;
+        }
+
+        /* Debug Panel */
+        .debug-panel {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
             padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            display: none;
         }
 
-        .github-status h3 {
-            color: #2e7d32;
-            margin-bottom: 5px;
+        .debug-panel h4 {
+            color: #495057;
+            margin-bottom: 10px;
         }
 
-        .github-status p {
-            color: #388e3c;
-            margin: 0;
+        .debug-panel pre {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.8rem;
         }
 
         /* Cabin Examples Grid */
@@ -475,6 +507,15 @@
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 15px;
             }
+
+            .modal-content {
+                padding: 25px;
+                margin: 10px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.6rem;
+            }
         }
 
         /* Success Animation */
@@ -487,6 +528,21 @@
                 transform: translateX(0);
                 opacity: 1;
             }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal {
+            animation: fadeIn 0.3s ease-out;
         }
     </style>
 </head>
@@ -615,7 +671,7 @@
         </div>
     </div>
 
-    <!-- Quote Modal -->
+    <!-- Quote Modal - IMPROVED STYLING -->
     <div class="modal" id="quoteModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -625,30 +681,28 @@
                 <p>We'll send you a detailed quote within 1 hour</p>
             </div>
 
-            </div>
-
             <!-- Status Messages -->
             <div id="statusMessage"></div>
 
             <form id="quoteForm">
                 <div class="form-row">
                     <label for="customerName">Your Name *</label>
-                    <input type="text" id="customerName" name="customerName" required>
+                    <input type="text" id="customerName" name="customerName" required placeholder="Enter your full name">
                 </div>
 
                 <div class="form-row">
                     <label for="customerEmail">Email Address *</label>
-                    <input type="email" id="customerEmail" name="customerEmail" required>
+                    <input type="email" id="customerEmail" name="customerEmail" required placeholder="your.email@example.com">
                 </div>
 
                 <div class="form-row">
                     <label for="customerPhone">Phone Number *</label>
-                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                    <input type="tel" id="customerPhone" name="customerPhone" required placeholder="021 123 4567">
                 </div>
 
                 <div class="form-row">
                     <label for="customerAddress">Delivery Address</label>
-                    <input type="text" id="customerAddress" name="customerAddress">
+                    <input type="text" id="customerAddress" name="customerAddress" placeholder="123 Main Street, City">
                 </div>
 
                 <div class="form-row">
@@ -660,17 +714,26 @@
                 <button type="submit" class="btn">Send Quote Request</button>
                 
                 <div class="email-backup-text">
-                    Having issues? 
-                    <a href="#" onclick="openEmailBackup(); return false;">Email directly</a> or 
-                    <a href="#" onclick="showQuoteText(); return false;">copy quote details</a>
+                    <strong>Having issues?</strong><br>
+                    <a href="#" onclick="openEmailBackup(); return false;">📧 Email directly</a> or 
+                    <a href="#" onclick="showQuoteText(); return false;">📋 Copy quote details</a>
+                </div>
+
+                <!-- Debug Panel -->
+                <div class="debug-panel" id="debugPanel">
+                    <h4>🔧 Debug Information</h4>
+                    <pre id="debugInfo">Waiting for submission...</pre>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // 🎯 WIX BACKEND API - WORKING CONFIGURATION
-        const WIX_API_URL = 'https://freedomcabinsnz.wixsite.com/my-site-2/_functions/submitCabinQuote';
+        // 🎯 WIX BACKEND API - TEST MULTIPLE ENDPOINTS
+        const WIX_API_ENDPOINTS = [
+            'https://freedomcabinsnz.wixsite.com/my-site-2/_functions/submitCabinQuote',
+            'https://freedomcabinsnz.wixsite.com/_functions/submitCabinQuote'
+        ];
         
         // Cabin models data with pricing
         const cabinModels = {
@@ -761,18 +824,48 @@
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🏠 Freedom Cabins Configurator Loading...');
+            console.log('📍 Current URL:', window.location.href);
+            
             loadCabinModels();
             createCabinExamples();
             setupEventListeners();
             updateDisplay();
+            
+            // Test Wix backend connection on load
+            testBackendConnection();
+            
             console.log('✅ Configurator Ready!');
         });
 
-        // Show status message
+        // Test backend connection
+        async function testBackendConnection() {
+            console.log('🔍 Testing Wix backend connection...');
+            
+            for (const endpoint of WIX_API_ENDPOINTS) {
+                try {
+                    const healthUrl = endpoint.replace('submitCabinQuote', 'health');
+                    console.log('Testing health endpoint:', healthUrl);
+                    
+                    const response = await fetch(healthUrl);
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log('✅ Backend connection successful:', data);
+                        return endpoint; // Return working endpoint
+                    }
+                } catch (error) {
+                    console.log('❌ Endpoint failed:', endpoint, error.message);
+                }
+            }
+            
+            console.warn('⚠️ No working backend endpoints found');
+            return null;
+        }
+
+        // Show status message with improved styling
         function showStatus(message, type = 'info') {
             const statusDiv = document.getElementById('statusMessage');
             statusDiv.className = type === 'error' ? 'error-message' : 
-                                 type === 'success' ? 'success-message' : 'debug-info';
+                                 type === 'success' ? 'success-message' : 'info-message';
             statusDiv.innerHTML = message;
             statusDiv.style.display = 'block';
             
@@ -781,6 +874,15 @@
                     statusDiv.style.display = 'none';
                 }, 5000);
             }
+        }
+
+        // Show debug information
+        function showDebugInfo(info) {
+            const debugPanel = document.getElementById('debugPanel');
+            const debugInfo = document.getElementById('debugInfo');
+            
+            debugInfo.textContent = JSON.stringify(info, null, 2);
+            debugPanel.style.display = 'block';
         }
 
         // Create cabin example cards
@@ -1012,6 +1114,8 @@
             }
             
             document.getElementById('statusMessage').style.display = 'none';
+            document.getElementById('debugPanel').style.display = 'none';
+            
             const modal = document.getElementById('quoteModal');
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -1030,8 +1134,8 @@
             }
         });
 
-        // 🎯 QUOTE SUBMISSION TO WIX BACKEND
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+        // 🎯 IMPROVED QUOTE SUBMISSION WITH BETTER ERROR HANDLING
+        document.getElementById('quoteForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = e.target.querySelector('.btn');
@@ -1040,8 +1144,9 @@
             submitBtn.disabled = true;
             
             document.getElementById('statusMessage').style.display = 'none';
+            document.getElementById('debugPanel').style.display = 'none';
             
-            // Prepare quote data for Wix backend
+            // Prepare quote data
             const formData = {
                 customerName: document.getElementById('customerName').value,
                 customerEmail: document.getElementById('customerEmail').value,
@@ -1069,58 +1174,105 @@
             breakdownText += '\n--- Generated by Freedom Cabins NZ Configurator ---';
             formData.quoteBreakdown = breakdownText;
             
-            console.log('📤 Sending quote to Wix backend:', formData);
+            console.log('📤 Sending quote:', formData);
             
-            // Send to Wix backend
-            fetch(WIX_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                console.log('📨 Wix Response Status:', response.status);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            // Try multiple endpoints
+            let lastError = null;
+            let debugInfo = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                attempts: []
+            };
+            
+            for (const endpoint of WIX_API_ENDPOINTS) {
+                try {
+                    console.log(`🔄 Trying endpoint: ${endpoint}`);
+                    
+                    const attemptInfo = {
+                        endpoint: endpoint,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    showStatus('⏳ Connecting to server...', 'info');
+                    
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    attemptInfo.status = response.status;
+                    attemptInfo.statusText = response.statusText;
+                    
+                    console.log(`📨 Response: ${response.status} ${response.statusText}`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    const data = await response.json();
+                    attemptInfo.success = true;
+                    attemptInfo.responseData = data;
+                    debugInfo.attempts.push(attemptInfo);
+                    
+                    console.log('✅ Success:', data);
+                    
+                    if (data.success) {
+                        showStatus('✅ Quote sent successfully! We\'ll get back to you within 1 hour.', 'success');
+                        showSuccessMessage();
+                        
+                        setTimeout(() => {
+                            closeModal();
+                            document.getElementById('quoteForm').reset();
+                        }, 2000);
+                        
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        return; // Success! Exit the function
+                    } else {
+                        throw new Error(data.error || 'Unknown error from server');
+                    }
+                    
+                } catch (error) {
+                    console.error(`❌ Endpoint ${endpoint} failed:`, error);
+                    
+                    const attemptInfo = {
+                        endpoint: endpoint,
+                        timestamp: new Date().toISOString(),
+                        success: false,
+                        error: error.message
+                    };
+                    debugInfo.attempts.push(attemptInfo);
+                    
+                    lastError = error;
+                    continue; // Try next endpoint
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log('✅ Wix Success Response:', data);
-                
-                if (data.success) {
-                    showStatus('✅ Quote sent successfully! We\'ll get back to you within 1 hour.', 'success');
-                    showSuccessMessage();
-                    setTimeout(() => {
-                        closeModal();
-                        document.getElementById('quoteForm').reset();
-                    }, 2000);
-                } else {
-                    throw new Error(data.error || 'Unknown error from Wix');
-                }
-            })
-            .catch(error => {
-                console.error('❌ Quote Submission Error:', error);
-                
-                let errorMessage = '❌ Failed to send quote: ';
-                
-                if (error.message.includes('Failed to fetch')) {
-                    errorMessage += 'Network error. Please check your internet connection and try again.';
-                } else if (error.message.includes('404')) {
-                    errorMessage += 'Wix endpoint not found. Please contact support.';
-                } else {
-                    errorMessage += error.message;
-                }
-                
-                errorMessage += ' Please use the email backup option below.';
-                showStatus(errorMessage, 'error');
-            })
-            .finally(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
+            }
+            
+            // All endpoints failed
+            console.error('❌ All endpoints failed. Last error:', lastError);
+            
+            let errorMessage = '❌ Unable to send quote: ';
+            
+            if (lastError.message.includes('Failed to fetch')) {
+                errorMessage += 'Connection failed. Please check your internet connection.';
+            } else if (lastError.message.includes('404')) {
+                errorMessage += 'Server endpoint not found.';
+            } else if (lastError.message.includes('CORS')) {
+                errorMessage += 'Cross-origin request blocked.';
+            } else {
+                errorMessage += lastError.message;
+            }
+            
+            errorMessage += ' Please try the email backup option below.';
+            
+            showStatus(errorMessage, 'error');
+            showDebugInfo(debugInfo);
+            
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         });
 
         // Success message animation
@@ -1135,7 +1287,7 @@
                 padding: 20px 25px;
                 border-radius: 10px;
                 box-shadow: 0 10px 30px rgba(218, 138, 103, 0.3);
-                z-index: 9999;
+                z-index: 10001;
                 font-weight: 600;
                 max-width: 350px;
                 animation: slideIn 0.3s ease-out;
@@ -1145,7 +1297,7 @@
                     <span style="font-size: 1.5rem;">✅</span>
                     <div>
                         <div style="font-size: 1.1rem;">Quote Sent Successfully!</div>
-                        <div style="font-size: 0.9rem; opacity: 0.9;">Professional delivery guaranteed</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">We'll contact you within 1 hour</div>
                     </div>
                 </div>
             `;
@@ -1201,7 +1353,7 @@ Additional Notes:
 ${additionalNotes}
 
 ---
-Sent via Freedom Cabins NZ Configurator (GitHub Pages)
+Sent via Freedom Cabins NZ Configurator
             `);
             
             const mailtoLink = `mailto:info@freedomcabinsnz.com?subject=${subject}&body=${body}`;
